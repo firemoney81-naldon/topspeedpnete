@@ -1,23 +1,317 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+ <style>
+    /* Noto Sans KR font import */
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+    
+    body { font-family: 'Noto Sans KR', sans-serif; line-height: 1.8; margin: 0; padding: 0; color: #333; background-color: #f7f9fc; }
+    header { background-color: #e6f7ff; text-align: center; padding: 60px 20px; border-bottom: 5px solid #007bff; }
+    header h1 { color: #007bff; font-size: 2.5em; margin-bottom: 10px; font-weight: 700; }
+    header p { color: #555; font-size: 1.2em; max-width: 800px; margin: 0 auto; line-height: 1.6; }
+    section { padding: 40px 20px; max-width: 960px; margin: auto; background-color: #ffffff; border-radius: 12px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); margin-bottom: 25px; }
+    h2 { color: #007bff; font-size: 2em; border-bottom: 2px solid #e0e0e0; padding-bottom: 10px; margin-top: 0; font-weight: 600; }
+    h3 { color: #28a745; font-size: 1.5em; margin-top: 30px; border-left: 5px solid #28a745; padding-left: 10px; font-weight: 500; }
+    .cta-btn {
+      display: inline-block;
+      padding: 18px 35px;
+      background-color: #28a745;
+      color: #fff;
+      font-size: 1.1em;
+      font-weight: 600;
+      border-radius: 10px;
+      text-decoration: none;
+      margin-top: 30px;
+      transition: background 0.3s ease, transform 0.3s ease;
+      box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3);
+    }
+    .cta-btn:hover { background-color: #218838; transform: translateY(-2px); }
+    ul, ol { padding-left: 20px; line-height: 1.8; }
+    li { margin-bottom: 8px; }
+    footer { background-color: #343a40; color: #f8f9fa; text-align: center; padding: 30px 20px; font-size: 0.9em; margin-top: 30px; }
+    blockquote { font-style: italic; border-left: 4px solid #007bff; margin: 25px 0; padding: 15px 20px; background-color: #f1f8ff; color: #444; }
+    .img-container { text-align: center; margin: 20px 0; }
+    .img-container img { max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 0.95em; }
+    th, td { border: 1px solid #ddd; padding: 12px; text-align: center; }
+    th { background-color: #f1f1f1; color: #333; font-weight: 600; }
+    td strong { color: #d9534f; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; margin-bottom: 8px; font-weight: 500; color: #555; }
+    .form-group input, .form-group select, .form-group textarea { width: calc(100% - 24px); padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 1em; }
+    .submit-btn { background-color: #007bff; color: white; border: none; padding: 15px 30px; border-radius: 6px; cursor: pointer; font-size: 1em; transition: background 0.3s; }
+    .submit-btn:hover { background-color: #0056b3; }
+    .note { font-size: 0.9em; color: #777; margin-top: 10px; }
+    .accordion { border: 1px solid #e0e0e0; border-radius: 8px; margin-top: 20px; }
+    .accordion-item { border-bottom: 1px solid #e0e0e0; }
+    .accordion-item:last-child { border-bottom: none; }
+    .accordion-title { padding: 18px; background-color: #f9f9f9; cursor: pointer; font-weight: 600; color: #333; position: relative; }
+    .accordion-title::after { content: '▼'; position: absolute; right: 20px; transition: transform 0.3s; }
+    .accordion-content { padding: 18px; background-color: #ffffff; display: none; }
+    .accordion-item.active .accordion-title::after { transform: rotate(180deg); }
+  </style>
+
+  <!-- Schema Markup (JSON-LD) for SEO optimization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "인천 서구 인터넷 가입센터",
+    "description": "2026년 인천 서구 지역 초고속 인터넷 가입, 속도, 요금제 비교 및 사은품 혜택 정보 제공. 청라, 검단신도시 포함 전 지역 서비스. KT, SKT, LG U+ 통신사별 맞춤 상담.",
+    "url": "https://example.com/incheon-seogu-internet",
+    "logo": "https://example.com/logo.png",
+    "telephone": "010-0000-0000",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "인천광역시",
+      "addressRegion": "서구",
+      "postalCode": "22710",
+      "streetAddress": "인천 서구 청라대로 123"
+    },
+    "serviceType": [
+      {
+        "@type": "Service",
+        "name": "초고속 인터넷 가입",
+        "description": "100Mbps 인터넷 가입 서비스"
+      },
+      {
+        "@type": "Service",
+        "name": "기가 인터넷 가입",
+        "description": "500Mbps, 1Gbps 초고속 인터넷 가입 서비스"
+      },
+      {
+        "@type": "Service",
+        "name": "인터넷 TV 결합 상품",
+        "description": "인터넷과 IPTV 결합을 통한 추가 할인 혜택"
+      },
+      {
+        "@type": "Service",
+        "name": "사무실 인터넷 가입",
+        "description": "기업용 오피스 인터넷 및 전용 회선 설치"
+      }
+    ],
+    "areaServed": [
+      "인천광역시 서구 청라동", "인천광역시 서구 검단동", "인천광역시 서구 가정동", "인천광역시 서구 연희동", 
+      "인천광역시 서구 루원시티", "인천광역시 서구 석남동", "인천광역시 서구 가좌동", "인천광역시 서구 신현동", 
+      "인천광역시 서구 마전동", "인천광역시 서구 당하동", "인천광역시 서구 원창동", "인천광역시 서구 금곡동", 
+      "인천광역시 서구 오류동", "인천광역시 서구 왕길동", "인천광역시 서구 불로동", "인천광역시 서구 대곡동"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "010-0000-0000",
+      "contactType": "customer service",
+      "availableLanguage": ["ko"]
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <header>
+    <h1>인천 서구 인터넷 가입 2026년 최신 요금제 및 사은품 혜택 비교</h1>
+    <p>인천광역시 서구 전 지역 (청라, 검단신도시, 루원시티 포함) 최적의 인터넷 통신사(SKT, KT, LG U+) 요금제 추천 및 신규 가입 혜택을 비교해 드립니다.</p>
+    <a href="#consultation" class="cta-btn">📞 실시간 무료 견적 상담 신청</a>
+  </header>
+
+  <section id="introduction">
+    <h2>인천 서구 인터넷 가입, 왜 신중해야 할까요?</h2>
+    <p>최근 인천 서구는 청라국제도시, 검단신도시, 루원시티 등 신도시 개발과 함께 인구 유입이 급증하고 있습니다. 2026년을 기준으로 볼 때, 주거 환경이 급변하는 만큼 인터넷 통신 환경도 중요해지고 있습니다. 많은 분들이 '인천 서구 인터넷'을 검색하실 때 단순히 <strong>저렴한곳</strong>이나 <strong>싼곳</strong>을 찾으시지만, 실제로 중요한 것은 안정적인 속도와 신뢰도 높은 <strong>전문 업체</strong>의 서비스입니다. 특히 신규 아파트 단지나 오피스텔에서는 통신사별 인프라 구축 상태에 따라 속도 차이가 발생할 수 있습니다.</p>
+    <p>이 페이지는 인천 서구 지역 주민들이 초고속 인터넷 가입을 위해 필수적으로 알아야 할 정보들을 담고 있습니다. 통신사별 <strong>장단점</strong> 비교, <strong>가격</strong> 및 <strong>요금</strong> 상세 분석, 그리고 <strong>현금지원</strong> 및 <strong>사은품 혜택</strong> 등 2026년 최신 정보를 바탕으로 여러분의 합리적인 선택을 돕고자 합니다. <strong>평균</strong>적인 인터넷 가입 절차와 <strong>예상 비용</strong>을 투명하게 공개하여, 복잡한 인터넷 가입 과정을 간소화했습니다.</p>
+  </section>
+
+  <section id="local-analysis">
+    <h2>인천 서구 주요 지역별 인터넷 환경 분석 (2026)</h2>
+    <p>인천 서구는 크게 청라국제도시, 검단신도시, 그리고 구도심(가정동, 연희동, 석남동 등)으로 나뉩니다. 각 지역별로 인터넷 인프라 구축 현황이 달라 가입 전에 반드시 확인해야 합니다. 신규 아파트 단지는 기가 인터넷(1Gbps)이 기본으로 설치되어 있지만, 구도심의 일부 빌라나 주택은 100Mbps 광랜만 지원될 수도 있습니다. 이처럼 지역별로 통신 환경이 다른 점이 바로 <strong>인천 서구 인터넷</strong>을 검색할 때 중요한 요소가 됩니다.</p>
+
+    <h3>1. 청라국제도시 및 루원시티</h3>
+    <p>청라국제도시와 루원시티는 최신 통신 인프라가 잘 갖춰진 곳으로 알려져 있습니다. 대부분의 아파트 단지에서는 SKT, KT, LG U+ 3사 모두 기가급 인터넷 서비스를 안정적으로 제공하고 있습니다. 2026년 기준으로 청라에서는 10Gbps급 초고속 인터넷 서비스를 제공하는 통신사도 등장하여, 고화질 스트리밍, 대용량 파일 업로드, AI(인공지능) 기반 작업 등 고성능 작업을 하는 사용자들에게 유리합니다.</p>
+    
+    <h3>2. 검단신도시</h3>
+    <p>검단신도시는 현재도 꾸준히 입주가 진행되고 있는 지역입니다. 이사철에는 인터넷 가입 수요가 폭발적으로 증가하며, 통신사별로 신규 가입 <strong>혜택</strong> 경쟁이 치열한 곳입니다. 특히 <strong>신규 가입</strong>자를 위한 <strong>현금지원</strong>이나 <strong>상품권</strong> <strong>이벤트</strong>가 활발하게 진행됩니다. 검단 지역의 경우, 각 통신사별로 아파트 단지 내 전용 프로모션을 진행하는 경우가 많으므로 꼼꼼한 비교가 필요합니다.</p>
+    
+    <h3>3. 구도심 (가정동, 석남동, 가좌동 등)</h3>
+    <p>가정동, 석남동, 가좌동 등은 비교적 오래된 주택가나 상가 밀집 지역이 많습니다. 이 지역에서는 <strong>저렴한곳</strong>을 찾기 위해 100Mbps 광랜을 선택하는 경우가 많지만, <strong>예상 비용</strong>을 고려하더라도 500Mbps 이상 기가 라이트 상품을 선택하는 것이 장기적으로 만족도가 높습니다. 통신사별로 제공하는 서비스의 <strong>차이점</strong>을 정확히 알고 선택해야 합니다.</p>
+  </section>
+
+  <section id="comparison">
+    <h2>통신사별 인터넷 서비스 비교 (SKT, KT, LG U+)</h2>
+    <p>인천 서구에서 가장 많이 선택하는 통신사는 KT, SKT, LG U+ 3사입니다. 각 통신사는 고유의 장점을 가지고 있으며, 단순히 <strong>가격</strong>이나 <strong>사은품</strong>만 보고 결정하기보다는 가족 구성원의 통신 환경(휴대폰 통신사)을 고려하여 결합 상품을 선택하는 것이 좋습니다. <strong>장단점</strong>을 비교하여 본인에게 맞는 최적의 통신사를 찾아보세요.</p>
+    
+    <h3>1. KT (케이티) - 안정적인 인프라의 강자</h3>
+    <p>KT는 대한민국 통신망의 근간인 '골든와이파이'로 불리는 유선 인프라가 가장 잘 구축되어 있습니다. 인천 서구의 경우에도 신규 아파트뿐만 아니라 구도심 지역에서도 안정적인 속도를 보장합니다. KT의 <strong>장점</strong>은 <strong>속도</strong>의 안정성과 A/S의 신뢰도입니다. 반면 <strong>단점</strong>은 타사 대비 <strong>요금</strong>이 <strong>평균</strong>적으로 다소 높게 책정될 수 있다는 점입니다. 하지만 가족 휴대폰이 KT라면 결합 할인으로 <strong>비용</strong>을 크게 절감할 수 있습니다.</p>
+
+    <h3>2. SKT (에스케이텔레콤) - 모바일 결합의 최강자</h3>
+    <p>SKT는 모바일 시장 점유율 1위인 만큼, 휴대폰과의 결합 상품 혜택이 매우 강력합니다. 인천 서구 지역 주민들 중 SKT 휴대폰을 사용하는 분들에게는 가장 <strong>추천</strong>되는 통신사입니다. <strong>장점</strong>은 ‘온가족 할인’ 등 파격적인 모바일 결합 할인과 풍성한 <strong>사은품</strong>입니다. <strong>단점</strong>으로는 간혹 외곽 지역에서 KT 대비 인프라가 약할 수 있다는 점이 지적됩니다. SKT 인터넷 가입 시에는 반드시 휴대폰 <strong>가입</strong> 여부를 확인하세요.</p>
+
+    <h3>3. LG U+ (엘지 유플러스) - IPTV와 부가 서비스의 혁신</h3>
+    <p>LG U+는 IPTV 서비스와 다양한 부가 서비스(AI 스피커, 홈CCTV 등)에 강점을 보입니다. 특히 OTT 서비스(넷플릭스, 디즈니플러스 등)를 연동한 결합 상품이 인기입니다. <strong>장점</strong>은 IPTV 화질과 콘텐츠가 우수하며, 타사 대비 <strong>요금</strong>이 <strong>저렴한곳</strong>이 많다는 것입니다. <strong>단점</strong>은 일부 지역에서 속도 변동성이 나타날 수 있다는 후기가 있습니다. <strong>신규 가입</strong> <strong>혜택</strong>이 다양한 만큼, <strong>비교</strong> 시 꼭 확인해야 합니다.</p>
+
+    <h4>통신사별 2026년 요금제 및 사은품 혜택 비교표</h4>
+    <table>
+      <thead>
+        <tr>
+          <th>통신사</th>
+          <th>추천 요금제 (기가 라이트)</th>
+          <th><strong>월 평균</strong> 요금 (3년 약정)</th>
+          <th>주요 <strong>장점</strong> 및 특징</th>
+          <th><strong>예상</strong> 사은품/현금지원</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>SKT</td>
+          <td>SKB Btv 500M (TV 결합)</td>
+          <td>3만원대 초반 (휴대폰 결합 시)</td>
+          <td>모바일 결합 할인 최강, <strong>신규 가입 혜택</strong> 우수</td>
+          <td>업계 최고 수준 <strong>현금지원</strong> (변동 가능)</td>
+        </tr>
+        <tr>
+          <td>KT</td>
+          <td>KT 500M olleh TV (TV 결합)</td>
+          <td>3만원대 중반</td>
+          <td>전국 <strong>최고의 안정성</strong>, A/S 만족도 높음</td>
+          <td>타사 대비 <strong>현금지원</strong> 다소 적으나 상품권 제공</td>
+        </tr>
+        <tr>
+          <td>LG U+</td>
+          <td>LG U+ 500M U+tv (TV 결합)</td>
+          <td>3만원대 초반</td>
+          <td>IPTV 콘텐츠 우수, <strong>저렴한곳</strong> 요금제 다수</td>
+          <td>다양한 부가 서비스 제공 및 <strong>현금지원</strong></td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note">※ 2026년 예상 기준이며, 요금 및 사은품은 프로모션에 따라 달라질 수 있습니다. 정확한 <strong>견적</strong>은 상담을 통해 확인하세요.</p>
+  </section>
+
+  <section id="process-and-benefits">
+    <h2>인천 서구 인터넷 가입 절차와 사은품 혜택 극대화 방법</h2>
+    <p>인터넷 가입은 단순히 신청 버튼을 누르는 것으로 끝나지 않습니다. 특히 <strong>신규 가입</strong> 시에는 <strong>사은품</strong> 및 <strong>현금지원</strong> <strong>혜택</strong>을 최대로 받기 위해 몇 가지 팁이 필요합니다. <strong>내돈내산</strong> 후기를 살펴보면, 인터넷 <strong>전문 업체</strong>를 통해 가입하는 것이 가장 유리하다고 조언합니다. 이 <strong>업체</strong>들은 통신사 본사 대비 더 많은 <strong>현금지원</strong>이나 <strong>상품권</strong> <strong>이벤트</strong>를 제공하기 때문입니다.</p>
+
+    <h3>1. 사은품 및 현금지원 혜택 비교 시 유의사항</h3>
+    <p>인터넷 가입 시 제공되는 <strong>사은품</strong>이나 <strong>현금지원</strong>은 통신사 본사보다 <strong>전문 업체</strong>가 더 많은 경우가 많습니다. <strong>디시</strong>(D/C)나 온라인 커뮤니티에서 정보를 얻을 수 있지만, <strong>순위</strong>나 <strong>가격</strong> <strong>비교</strong> 시 신뢰할 수 있는 정보를 얻는 것이 중요합니다. <strong>예상 금액</strong>을 꼼꼼히 따져보고, <strong>상품권</strong>과 <strong>현금지원</strong> 비율을 확인하세요.</p>
+    <ul>
+      <li><strong>현금지원</strong>: <strong>신규 가입</strong> 시 일정 <strong>지원금</strong>을 현금으로 지급받는 혜택.</li>
+      <li><strong>상품권</strong>: 백화점 상품권, 대형마트 상품권 등으로 지급되는 혜택.</li>
+      <li><strong>결합 할인</strong>: 가족 구성원의 휴대폰 요금제를 묶어 <strong>할인</strong>받는 방법.</li>
+    </ul>
+
+    <h3>2. 2026년 인천 서구 이사 고객을 위한 특별 혜택</h3>
+    <p><strong>인천 서구</strong>로 <strong>이사</strong>하는 고객이라면 기존 통신사를 해지하고 <strong>신규 가입</strong>을 할 때 특별 <strong>혜택</strong>을 받을 수 있습니다. <strong>이사</strong> 시에는 인터넷 이전 설치가 가능하지만, 통신사를 변경하여 <strong>신규 가입</strong>하는 것이 <strong>현금지원</strong>을 더 많이 받을 수 있는 기회입니다. <strong>예상 비용</strong>을 절감하기 위해 <strong>이사</strong> 일정을 <strong>업체</strong>에 미리 알려주세요.</p>
+
+    <h3>3. AI와 빅데이터 기반 맞춤형 추천 (Gemini, ChatGPT)</h3>
+    <p>최근에는 <strong>Gemini</strong>나 <strong>ChatGPT</strong>와 같은 AI 기술을 활용하여 개인의 인터넷 사용 패턴을 분석하고 최적의 <strong>요금제</strong>를 <strong>추천</strong>해주는 서비스도 등장했습니다. 하지만 AI가 제공하는 정보는 일반적인 정보일 뿐, 인천 서구 내 특정 지역의 인프라 상태나 실시간 <strong>신규 가입</strong> 프로모션은 반영하지 못할 수 있습니다. <strong>전문 업체</strong> 상담을 통해 실시간 정보를 확인하는 것이 가장 정확합니다.</p>
+
+    <h4>외부 신뢰성 사이트 정보</h4>
+    <ul>
+      <li><strong>과학기술정보통신부</strong> (https://www.msit.go.kr): 통신 서비스 품질 평가 및 가이드라인 정보 제공.</li>
+      <li><strong>한국인터넷진흥원 (KISA)</strong> (https://www.kisa.or.kr): 인터넷 보안 및 인프라 관련 공식 정보 제공.</li>
+      <li><strong>네이버</strong> 지식백과 (https://terms.naver.com): 인터넷 용어 및 기술에 대한 정의.</li>
+      <li><strong>나무위키</strong> (https://namu.wiki/w/인천광역시 서구): 인천 서구 지역 정보 및 개발 현황.</li>
+      <li><strong>SKT, KT, LGU+ 공식 홈페이지</strong>: 각 통신사별 요금제 상세 정보 및 결합 상품 안내.</li>
+    </ul>
+  </section>
+
+  <section id="faq-reviews">
+    <h2>자주 묻는 질문 (FAQ)</h2>
+    <div class="accordion">
+      <div class="accordion-item">
+        <div class="accordion-title">Q. 인천 서구 인터넷 가입 시 <strong>평균</strong>적인 <strong>비용</strong>은 얼마인가요?</div>
+        <div class="accordion-content">
+          <p>A. 2026년 기준으로 100Mbps 광랜 기준 월 2만원대 초반, 500Mbps 기가 라이트 기준 월 3만원대 초중반이 <strong>평균</strong> <strong>가격</strong>입니다. 여기에 휴대폰 결합 할인 혜택이 적용되면 <strong>비용</strong>은 더 절감됩니다. <strong>예상 금액</strong>은 통신사, <strong>요금제</strong>, 결합 상품 유무에 따라 크게 달라지므로 정확한 <strong>견적</strong>을 받아보는 것이 중요합니다.</p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-title">Q. <strong>내돈내산</strong> <strong>후기</strong>를 보면 <strong>사은품</strong> 지급이 늦어진다는 말이 있는데, <strong>전문 업체</strong>는 믿을 수 있나요?</div>
+        <div class="accordion-content">
+          <p>A. 일부 불량 <strong>업체</strong>의 경우 <strong>신규 가입</strong> <strong>혜택</strong>(<strong>현금지원</strong>, <strong>상품권</strong>)을 미루거나 지급하지 않는 경우가 있습니다. <strong>순위</strong>가 높고 <strong>후기</strong>가 많은 <strong>전문 업체</strong>를 선택해야 합니다. 당사는 정식 통신사 대리점으로, <strong>가입</strong> 시 지급되는 <strong>지원금</strong>을 약속된 날짜에 정확하게 지급합니다.</p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-title">Q. <strong>인천 서구</strong>로 이사할 때 인터넷 설치 일정이 늦어질까봐 걱정돼요.</div>
+        <div class="accordion-content">
+          <p>A. <strong>이사</strong> 당일 설치를 원하시면 최소 1주일 전에는 <strong>전문 업체</strong>를 통해 상담을 신청하셔야 합니다. 특히 청라나 검단신도시 등 <strong>신규 가입</strong>이 많은 지역은 <strong>이사</strong> 성수기에 설치 일정이 밀릴 수 있습니다. 미리 <strong>업체</strong>와 일정을 조율하는 것이 중요합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews">
+    <h2>인천 서구 고객님들의 솔직한 이용 후기</h2>
+    <p>실제 <strong>인천 서구</strong> 고객들의 <strong>내돈내산</strong> <strong>후기</strong>를 바탕으로 당사의 서비스를 확인해보세요. <strong>전문 업체</strong>의 <strong>장점</strong>은 꼼꼼한 상담과 신속한 일 처리입니다.</p>
+    <blockquote>“청라로 이사 오면서 인터넷 가입 때문에 <strong>네이버</strong>, <strong>구글</strong>에서 한참 검색했어요. <strong>저렴한곳</strong> 찾다가 이곳을 알게 됐는데, 상담도 친절하고 <strong>현금지원</strong> <strong>혜택</strong>도 가장 좋았습니다. <strong>신규 가입</strong>인데도 복잡하지 않게 진행돼서 만족해요.” – 청라동 김○○님</blockquote>
+    <blockquote>“검단신도시 아파트 입주하면서 <strong>가입</strong>했어요. <strong>가격</strong> <strong>비교</strong>를 여러 곳 했는데, <strong>전문 업체</strong>라 그런지 <strong>사은품</strong>도 가장 많이 받고 설치도 빠르게 끝났습니다. <strong>단점</strong> 없이 깔끔하게 처리해주셨습니다.” – 검단동 박○○님</blockquote>
+    <blockquote>“가정동 빌라로 이사하면서 인터넷 속도 때문에 걱정했는데, 상담사님이 <strong>인천 서구</strong> 지역 인프라를 정확하게 알고 계셔서 안심했습니다. <strong>예상 비용</strong>도 정확하게 맞춰주셔서 좋았어요.” – 가정동 최○○님</blockquote>
+  </section>
+
+  <section id="consultation">
+    <h2>인천 서구 맞춤형 1:1 무료 견적 상담 신청</h2>
+    <p>인천 서구 지역별 최적의 인터넷 <strong>요금제</strong>, <strong>가격</strong>, <strong>사은품</strong> <strong>비교</strong>를 위해 지금 바로 무료 <strong>견적</strong>을 받아보세요. 2026년 최신 <strong>혜택</strong> 정보를 바탕으로 <strong>예상 금액</strong>을 안내해 드립니다. <strong>저렴한곳</strong>을 찾으시나요? <strong>전문 업체</strong>의 꼼꼼한 상담을 통해 합리적인 선택을 도와드립니다.</p>
+    <form action="#" method="post">
+      <div class="form-group">
+        <label for="name">이름:</label>
+        <input type="text" id="name" name="name" required placeholder="이름을 입력해주세요">
+      </div>
+      <div class="form-group">
+        <label for="phone">연락처:</label>
+        <input type="tel" id="phone" name="phone" required placeholder="휴대폰 번호를 입력해주세요 (- 없이)">
+      </div>
+      <div class="form-group">
+        <label for="address">인천 서구 이사(설치) 주소:</label>
+        <input type="text" id="address" name="address" required placeholder="예: 인천 서구 청라동 00아파트">
+      </div>
+      <div class="form-group">
+        <label for="serviceType">희망 인터넷 속도/종류:</label>
+        <select id="serviceType" name="serviceType" required>
+          <option value="">선택해주세요</option>
+          <option value="100m">광랜 (100Mbps)</option>
+          <option value="500m">기가 라이트 (500Mbps)</option>
+          <option value="1g">기가 인터넷 (1Gbps)</option>
+          <option value="tv-combo">인터넷 + TV 결합 상품</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="memo">문의 내용 (궁금한 점, 이사 일정 등):</label>
+        <textarea id="memo" name="memo" rows="4" placeholder="문의 내용을 자세히 작성해주세요. 이사 일정을 알려주시면 정확한 상담이 가능합니다."></textarea>
+      </div>
+      <div class="form-group">
+        <label><input type="checkbox" name="privacyAgree" required> 개인정보 수집 및 이용 동의 (필수)</label>
+      </div>
+      <button type="submit" class="submit-btn">견적 상담 신청하기</button>
+    </form>
+  </section>
+
+  <section id="footer-links">
+    <h2>인천 서구 관련 정보 및 키워드</h2>
+    <p>인천 서구의 <strong>인터넷</strong> 관련 <strong>자동완성 키워드</strong> 및 <strong>연관 검색어</strong>를 통해 더 많은 정보를 찾아볼 수 있습니다. <strong>함께 많이 찾는</strong> 키워드: 인천 서구 인터넷 설치, 청라 아파트 인터넷, 검단신도시 SKT, LG U+ <strong>할인</strong>, 가정동 인터넷 <strong>가입</strong>, <strong>네이버</strong>, <strong>구글</strong> <strong>트렌드</strong> 분석, <strong>페이스북</strong>, <strong>인스타그램</strong> <strong>후기</strong>, <strong>유튜브</strong> <strong>리뷰</strong>, <strong>AI</strong> <strong>추천</strong>, <strong>ChatGPT</strong> <strong>요금</strong> <strong>비교</strong>, <strong>제미나이</strong> <strong>혜택</strong> <strong>분석</strong> 등.</p>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Accordion functionality for FAQ
+      var accordions = document.querySelectorAll('.accordion-title');
+      accordions.forEach(function(accordion) {
+        accordion.addEventListener('click', function() {
+          var content = this.nextElementSibling;
+          var parentItem = this.parentElement;
+          var isActive = parentItem.classList.contains('active');
+          
+          // Close other open accordions
+          document.querySelectorAll('.accordion-item.active').forEach(function(openItem) {
+            if (openItem !== parentItem) {
+              openItem.classList.remove('active');
+              openItem.querySelector('.accordion-content').style.display = 'none';
+            }
+          });
+          
+          // Toggle current accordion
+          if (!isActive) {
+            parentItem.classList.add('active');
+            content.style.display = 'block';
+          } else {
+            parentItem.classList.remove('active');
+            content.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+  
